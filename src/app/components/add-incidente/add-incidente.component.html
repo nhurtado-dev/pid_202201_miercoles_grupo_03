@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<app-menu></app-menu>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--es como el JSTL - customTag-->
+
+<head th:replace="principal::head">
+	<title>Getting Started: Serving Web Content</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<div style="margin-top: 4%">
+  <form class="content" (ngSubmit)="saveIncidente()"> 
+    <div class="submit-form">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>Registro de Incidente</h6>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 3%">
+
+        <div class="col-lg-4">
+          <label for="hora">Hora del Incidente</label>
+          <input type="time" class="form-control" name="hora" id="hora" [(ngModel)] = "incidente.hora" />
+        </div>
+
+        <div class="col-lg-4">
+          <label for="descripcion">Descripcion del Incidente</label>
+          <input type="text" class="form-control" name="descripcion" id="descripcion" [(ngModel)] = "incidente.descripcion" />
+        </div>
+      </div>
+      <div class="row" style="margin-top: 3%">
+        <div class="col-lg-4">
+          <label for="estado">estado</label>
+          <input type="number" class="form-control" name="estado" id="estado" [(ngModel)] = "incidente.estado" />
+        </div>
+        <div class="col-lg-4">
+          <label for="fechaAtencion">Fecha de Atención</label>
+          <input type="date" class="form-control" name="fechaAtencion" id="fechaAtencion" [(ngModel)] = "incidente.fechaAtencion" />
+        </div>
+        <div class="col-lg-4">
+          <label for="fechaRegistro">Fecha de Registro</label>
+          <input type="date" class="form-control" name="fechaRegistro" id="fechaRegistro" [(ngModel)] = "incidente.fechaRegistro" />
+        </div>
+      </div>
+      <div class="row" style="margin-top: 3%">
+        <div class="col-lg-6">
+          <label for="idUsuario">Propietario</label>
+          <select id="idUsuario" name="idUsuario" class="form-control" [(ngModel)] = "incidente.idUsuario!.idUsuario">
+            <option value="-1"> [Seleccione] </option>
+            <option *ngFor="let aux of usuario" value="{{aux.idUsuario}}">
+              {{ aux.nombre }} {{ aux.primerapellido}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 3%">
+      <div class="col-lg-12">
+        <button class="btn btn-success">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>
