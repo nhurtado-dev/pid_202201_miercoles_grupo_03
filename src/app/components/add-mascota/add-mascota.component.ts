@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Departamento } from 'src/app/models/departamento';
 import { Mascotas } from 'src/app/models/mascotas.model';
 import { Propietarios } from 'src/app/models/propietarios.model';
-import { DepartamentoService } from 'src/app/services/departamento.service';
 import { MascotaService } from 'src/app/services/mascota.service';
 import { PropietarioService } from 'src/app/services/propietario.service';
 
@@ -15,7 +13,6 @@ import { PropietarioService } from 'src/app/services/propietario.service';
 })
 export class AddMascotaComponent implements OnInit {
 
-  departamentos : Departamento[] = [];
   propietarios : Propietarios[] = [];
 
   mascota:Mascotas={
@@ -23,9 +20,6 @@ export class AddMascotaComponent implements OnInit {
     codpropietario:{
       codpropietario: -1
     },
-    coddepartamento:{
-      coddepartamento: -1
-    }
 
   };
 
@@ -35,14 +29,12 @@ export class AddMascotaComponent implements OnInit {
       edad :          ['', [Validators.required, Validators.pattern('[0-9]{1,3}')]],
       raza :          ['', [Validators.required, Validators.pattern('[a-zA-Z ]{3,30}')]],
       propietario :   ['', [Validators.min(1)]],
-      departamento :  ['', [Validators.min(1)]],
   });
 
   // para verificar que se pulsó el boton
   submitted = false;
 
   constructor(private propietarioService:PropietarioService,
-              private departamentoService:DepartamentoService,
               private mascotaService:MascotaService,
               private formBuilder:FormBuilder) {
 
@@ -50,32 +42,21 @@ export class AddMascotaComponent implements OnInit {
                   (p) => this.propietarios = p
                 );
 
-                this.departamentoService.listaDepartamento().subscribe(
-                  (d) => this.departamentos = d
-                );
  }
 
-  saveMascota(){
-    console.log(">>saveMascota");
-    console.log(this.mascota);
-
-    this.submitted = true;
-
-    // finaliza el metodo si hay un error
-    if (this.forms.invalid){
-      return;
-    }
-
-    this.mascotaService.create(this.mascota).subscribe(
-      response =>{
-        console.log(response.mensaje);
-        alert(response.mensaje)
-      },
-      error =>{
-        console.error(error);    
-      },
-    );
-  }
+ saveMascota(){
+  console.log(">>saveMascota");
+  console.log(this.mascota);
+  this.mascotaService.create(this.mascota).subscribe(
+    response =>{
+      console.log(response.mensaje);
+      alert(response.mensaje)
+    },
+    error =>{
+      console.error(error);    
+    },
+  );
+}
 
   ngOnInit(): void {
   }

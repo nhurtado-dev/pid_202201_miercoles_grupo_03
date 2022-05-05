@@ -23,9 +23,12 @@ export class AddIncidenteComponent implements OnInit {
 
   //las validaciones
       forms : FormGroup = this.formBuilder.group({
-        codvisitantes : ['', [Validators.required, Validators.pattern('[a-zA-Z ]{3,30}')]],
-        dni :          ['', [Validators.required, Validators.pattern('[0-9]{1,3}')]],
-        nombrevisitante :          ['', [Validators.required, Validators.pattern('[a-zA-Z ]{3,30}')]],
+        codincidente : ['', [Validators.required, Validators.pattern('[a-zA-Z ]{3,30}')]],
+        hora :          ['', [Validators.required]],
+        descripcion :          ['', [Validators.required, Validators.pattern('[a-zA-Z ]{3,30}')]],
+        estado :   ['', [Validators.min(1)]],
+        fechaAtencion :          ['', [Validators.required]],
+        fechaRegistro :          ['', [Validators.required]],
         idUsuario :   ['', [Validators.min(1)]],
         codpropietario :  ['', [Validators.min(1)]],
     });

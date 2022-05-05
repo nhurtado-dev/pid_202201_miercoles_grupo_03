@@ -1,6 +1,14 @@
 <!DOCTYPE HTML>
 <app-menu></app-menu>
 <html xmlns:th="http://www.thymeleaf.org">
+<script src="sweetalert2.all.min.js">
+  Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})
+</script>
 <!--es como el JSTL - customTag-->
 
 <head th:replace="principal::head">
@@ -39,9 +47,7 @@
             <input type="text" formControlName="raza" class="form-control" name="raza" id="raza"  [(ngModel)]="mascota.raza">
            
           </div>
-        </div>
-  
-        <div class="row" style="margin-top: 3%">
+
           <div class="col-lg-4">
             <label for="propietario">Propietario</label>
             <select id="propietario" formControlName="propietario" name="propietario" class="form-control"  [(ngModel)]="mascota.codpropietario!.codpropietario">
@@ -52,19 +58,9 @@
             </select>
               
           </div>
-          <div class="col-lg-4">
-            <label for="departamento">Departamento</label>
-            <select id="departamento" formControlName="departamento" name="departamento" class="form-control"  [(ngModel)]="mascota.coddepartamento!.coddepartamento">
-            <option value="-1"> [Seleccione] </option>
-            <option *ngFor="let aux of departamentos" value="{{aux.coddepartamento}}">
-                {{ aux.numdepartamento }}
-            </option>       
-            </select>
-           
-          </div>
         </div>
   
-        </div>
+      </div>
           <div class="row" style="margin-top: 3%">
               <div class="col-lg-12">
               <button  class="btn btn-success">Registrar</button>

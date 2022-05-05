@@ -1,4 +1,3 @@
-import { Departamento } from "./departamento";
 import { Propietarios } from "./propietarios.model";
 
 export class Mascotas {
@@ -7,5 +6,4 @@ export class Mascotas {
     edad?: number;
     raza?: string;
     codpropietario?: Propietarios;
-    coddepartamento?: Departamento
 }
