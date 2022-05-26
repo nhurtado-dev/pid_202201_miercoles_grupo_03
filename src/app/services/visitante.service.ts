@@ -6,6 +6,9 @@ import { Visitante } from '../models/visitante.model';
 // Controlador Visitante
 const baseUrl = 'http://localhost:8055/rest/visitante'
 
+// Controlador Utils
+const baseURL2= "http://localhost:8055/rest/util/visitante";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,4 +21,7 @@ export class VisitanteService {
     return this.http.post(baseUrl, data);
   }
 
+  listaVisitante():Observable<Visitante[]>{
+    return this.http.get<Visitante[]>(baseURL2);
+  }
 }

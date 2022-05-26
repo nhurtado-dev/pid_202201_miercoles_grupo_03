@@ -14,10 +14,9 @@
             <li class="nav-item " *ngIf="!isLogged">
                 <a class="nav-link"  routerLink="/appLogin"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
             </li>
-            <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
-                <a class="nav-link" style="cursor: pointer;"><i class="fas fa-door-open" ></i> Cerrar Sesión</a>
-                
-            </li>
+            <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()" >
+              <a class="nav-link" style="cursor: pointer;"><i class="fas fa-door-open" ></i> Cerrar Sesión</a>      
+          </li>
           <li class="nav-item" *ngIf="isLogged">
             <a routerLink="/addUsuario" class="nav-link">Usuario</a>
           </li>
@@ -37,13 +36,23 @@
             <a routerLink="/addDepartamento" class="nav-link">Departamento</a>
           </li>
           <li class="nav-item"  *ngIf="isLogged">
-            <a routerLink="/addMascota" class="nav-link">Mascota</a>
+            <a routerLink="/addMascota" class="nav-link" href="#">Mascota</a>
           </li>
-        </ul>
+          <li class="nav-item"  *ngIf="isLogged">
+            <a routerLink="/addVisita" class="nav-link">Visita</a>
+          </li>
+          <br>
+        </ul> 
+        
+        <div class="container text-center" style="text-align: right; color: whitesmoke;">
+          <div *ngIf="isLogged; else loggedOut"><h2 style="font-size: 20px;">Bienvenido {{nombreUsuario}}</h2></div>
+          <ng-template #loggedOut></ng-template>
+        </div>
+        
       </div>
-      
     </nav>
       <div class="container mt-3">
         <router-outlet></router-outlet>
       </div>
   </div>
+ 

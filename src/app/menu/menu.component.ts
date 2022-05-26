@@ -10,6 +10,7 @@ import { TokenService } from '../security/token.service';
 export class MenuComponent implements OnInit {
 
   isLogged = false;
+  nombreUsuario = "";
 
   constructor(private tokenService: TokenService) {
     console.log("MenuComponent >>> constructor >>> " + this.tokenService.getToken());
@@ -19,8 +20,10 @@ export class MenuComponent implements OnInit {
     console.log("MenuComponent >>> ngOnInit >>> " + this.tokenService.getToken());
     if (this.tokenService.getToken()) {
       this.isLogged = true;
+      this.nombreUsuario = this.tokenService.getUserNameComplete()|| '{}';
     } else {
       this.isLogged = false;
+      this.nombreUsuario = '';
     }
   }
 
