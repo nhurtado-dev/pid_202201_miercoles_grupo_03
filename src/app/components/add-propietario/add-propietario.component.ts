@@ -12,47 +12,62 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./add-propietario.component.css']
 })
 export class AddPropietarioComponent implements OnInit {
-  usuarios : Usuario[] = [];
-  departamentos : Departamento[] = [];
+  usuarios: Usuario[] = [];
+  departamentos: Departamento[] = [];
 
-  propietario:Propietarios={
-    idUsuario:{
-      idUsuario: -1
+  // Grilla
+  propietarios: Propietarios[] = [];
+
+  propietario: Propietarios = {
+    idUsuario: {
+      idUsuario: 2
     },
-    coddepartamento:{
+    coddepartamento: {
       coddepartamento: -1
     }
   }
 
+  // PAGINACION pageActual
+  pageActual: number = 1;
 
   constructor(private propietarioService: PropietarioService,
-              private usuarioService: UsuarioService,
-              private departamentoService: DepartamentoService) { 
+    private usuarioService: UsuarioService,
+    private departamentoService: DepartamentoService) {
 
-                this.usuarioService.listaUsuario().subscribe(
-                  (u) => this.usuarios = u
-                );
-                
-                this.departamentoService.listaDepartamento().subscribe(
-                  (d) => this.departamentos = d
-                );
- }
+    this.usuarioService.listaUsuario().subscribe(
+      (u) => this.usuarios = u
+    );
 
- savePropietario(){
-  console.log(">>savePropietario");
-  console.log(this.propietario);
-  this.propietarioService.create(this.propietario).subscribe(
-    response =>{
-      console.log(response.mensaje);
-      alert(response.mensaje)
-    },
-    error =>{
-      console.error(error);    
-    },
-  );
- }
-
-  ngOnInit(): void {
+    this.departamentoService.listaDepartamento().subscribe(
+      (d) => this.departamentos = d
+    );
   }
 
- }
+  savePropietario() {
+    console.log(">>savePropietario");
+    console.log(this.propietario);
+    this.propietarioService.create(this.propietario).subscribe(
+      response => {
+        console.log(response.mensaje);
+        alert(response.mensaje)
+        this.listaPropietarios();
+      },
+      error => {
+        console.error(error);
+      },
+    );
+  }
+
+  listaPropietarios(){
+      this.propietarioService.listaPropietario().subscribe(
+        (p) => {
+          this.propietarios = p
+        }
+      );
+  }
+
+  ngOnInit(): void {
+    this.listaPropietarios();
+  }
+
+}

@@ -1,3 +1,4 @@
+import { Departamento } from "./departamento";
 import { Propietarios } from "./propietarios.model";
 
 export class Mascotas {

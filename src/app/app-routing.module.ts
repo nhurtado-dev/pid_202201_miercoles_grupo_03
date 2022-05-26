@@ -7,8 +7,10 @@ import { AddPropietarioComponent } from './components/add-propietario/add-propie
 import { AddServiciosComponent } from './components/add-servicios/add-servicios.component';
 import { AddUsuarioComponent } from './components/add-usuario/add-usuario.component';
 import { AddVisitanteComponent } from './components/add-visitante/add-visitante.component';
+import { AddVisitaComponent } from './components/add-visita/add-visita.component';
 import { LoginComponent } from './auth/login.component';
 import { MenuComponent } from './menu/menu.component';
+
 
 const routes: Routes = [
   { path: '', component: MenuComponent },
@@ -20,6 +22,7 @@ const routes: Routes = [
   {path:"addVisitante",component:AddVisitanteComponent},
   {path:"addDepartamento",component:AddDepartamentoComponent},
   {path:"addMascota",component:AddMascotaComponent},
+  {path:"addVisita",component:AddVisitaComponent},
   {path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

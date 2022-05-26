@@ -16,6 +16,10 @@ import { AddMascotaComponent } from './components/add-mascota/add-mascota.compon
 import { AddEdificioComponent } from './components/add-edificio/add-edificio.component';
 import { MenuComponent } from './menu/menu.component';
 
+// IMPORTACION DE PAGINACIO
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AddVisitaComponent } from './components/add-visita/add-visita.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +32,11 @@ import { MenuComponent } from './menu/menu.component';
     LoginComponent,
     AddMascotaComponent,
     AddEdificioComponent,
-    MenuComponent
+    AddVisitaComponent,
+    MenuComponent,
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

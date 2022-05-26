@@ -14,50 +14,68 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class AddDepartamentoComponent implements OnInit {
 
-  usuarios : Usuario[] = [];
-  edificios : Edificio[] = [];
+  usuarios: Usuario[] = [];
+  edificios: Edificio[] = [];
 
-  departamento:Departamento={
-    codedificio:{
-        codedificio: -1
-    },  
-    idUsuario:{
-      idUsuario: -1
+  // Grilla
+  departamentos: Departamento[] = [];
+
+  departamento: Departamento = {
+    codedificio: {
+      codedificio: -1
+    },
+    idUsuario: {
+      idUsuario: 2
     }
-    
-   }
 
-  constructor(private departamentoService:DepartamentoService,
-              private   usuarioService: UsuarioService,
-              private edificioService: EdificioService) {
-
-                this.usuarioService.listaUsuario().subscribe(
-                  (u) => this.usuarios = u
-                );
-
-                this.edificioService.listaEdificio().subscribe(
-                  (e) => this.edificios = e
-                );
- }
-
-
-
-
- saveDepartamento(){
-  console.log(">>saveDepartamento");
-  console.log(this.departamento);
-  this.departamentoService.create(this.departamento).subscribe(
-    response =>{
-      console.log(response.mensaje);
-      alert(response.mensaje)
-    },
-    error =>{
-      console.error(error);    
-    },
-  );
- }
-
-  ngOnInit(): void {
   }
 
- }
+  // PAGINACION pageActual
+  pageActual: number = 1;
+
+
+  constructor(private departamentoService: DepartamentoService,
+    private usuarioService: UsuarioService,
+    private edificioService: EdificioService) {
+
+    this.usuarioService.listaUsuario().subscribe(
+      (u) => this.usuarios = u
+    );
+
+    this.edificioService.listaEdificio().subscribe(
+      (e) => this.edificios = e
+    );
+  }
+
+
+
+
+  saveDepartamento() {
+    console.log(">>saveDepartamento");
+    console.log(this.departamento);
+    this.departamentoService.create(this.departamento).subscribe(
+      response => {
+        console.log(response.mensaje);
+        alert(response.mensaje)
+        this.listadoDepartamentos();
+      },
+      error => {
+        console.error(error);
+      },
+    );
+  }
+
+  listadoDepartamentos(){
+    // Lista para Tabla de Departamento
+    this.departamentoService.listaDepartamento().subscribe(
+      (d) => {
+        this.departamentos = d
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.listadoDepartamentos();
+  }
+
+}
