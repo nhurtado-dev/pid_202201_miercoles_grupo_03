@@ -17,6 +17,10 @@ export class UsuarioService {
 
   constructor(private http : HttpClient) { }
 
+  
+  RegistraUsuario(data:Usuario):Observable<any>{
+    return this.http.post(baseUrlUsuario, data);
+  }
   listaUsuario():Observable<Usuario[]>{
       return this.http.get<Usuario[]>(baseURL);
   }
