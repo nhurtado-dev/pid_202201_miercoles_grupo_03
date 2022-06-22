@@ -10,6 +10,9 @@ import { AddVisitanteComponent } from './components/add-visitante/add-visitante.
 import { AddVisitaComponent } from './components/add-visita/add-visita.component';
 import { LoginComponent } from './auth/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { AddBoletaComponent } from './components/add-boleta/add-boleta.component';
+import { ConsultaBoletaComponent } from './components/consulta-boleta/consulta-boleta.component';
+import { AddPagoComponent } from './components/add-pago/add-pago.component';
 
 
 const routes: Routes = [
@@ -20,6 +23,9 @@ const routes: Routes = [
   {path:"addIncidente",component:AddIncidenteComponent},
   {path:"addServicio",component:AddServiciosComponent},
   {path:"addVisitante",component:AddVisitanteComponent},
+  {path:"addBoleta",component:AddBoletaComponent},
+  {path:"ConsultaBoleta",component:ConsultaBoletaComponent},
+  {path:"addPago",component:AddPagoComponent},
   {path:"addDepartamento",component:AddDepartamentoComponent},
   {path:"addMascota",component:AddMascotaComponent},
   {path:"addVisita",component:AddVisitaComponent},

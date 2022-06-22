@@ -14,5 +14,5 @@ export class Propietarios {
     horaregistro?: Time;
     estado?: boolean;
     idUsuario?: Usuario;
-    coddepartamento?: Departamento
+    coddepartamento?: Departamento;
 }
