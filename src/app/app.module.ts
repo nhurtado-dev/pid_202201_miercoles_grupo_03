@@ -19,6 +19,9 @@ import { MenuComponent } from './menu/menu.component';
 // IMPORTACION DE PAGINACIO
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddVisitaComponent } from './components/add-visita/add-visita.component';
+import { AddBoletaComponent } from './components/add-boleta/add-boleta.component';
+import { AddPagoComponent } from './components/add-pago/add-pago.component';
+import { ConsultaBoletaComponent } from './components/consulta-boleta/consulta-boleta.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +37,16 @@ import { AddVisitaComponent } from './components/add-visita/add-visita.component
     AddEdificioComponent,
     AddVisitaComponent,
     MenuComponent,
+    AddBoletaComponent,
+    AddPagoComponent,
+    ConsultaBoletaComponent,
   ],
   imports: [
     NgxPaginationModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    //ReactiveFormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     AppRoutingModule
   ],

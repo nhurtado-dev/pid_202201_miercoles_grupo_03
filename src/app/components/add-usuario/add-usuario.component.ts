@@ -16,8 +16,6 @@ export class AddUsuarioComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
  
-  //
-  user: Usuario[] = [];
   //roles: string[] = [];
   isAdmin = false;
   //Variables globales para los combobox
@@ -25,6 +23,9 @@ export class AddUsuarioComponent implements OnInit {
   provincias: string[] = [];
   distritos: Ubigeo[] = [];
   filtro: string = "";
+  usuarios:Usuario[]=[];
+
+  pageActual: number = 1;
 
   //Variables seleccionadas
   usuario: Usuario = {
@@ -36,10 +37,14 @@ export class AddUsuarioComponent implements OnInit {
     },
   }
 
-  constructor(private ubigeoService: UbigeoService, private usuarioService: UsuarioService,
+  constructor(private ubigeoService: UbigeoService, 
+    private usuarioService: UsuarioService,
     private tokenService: TokenService,private formBuilder: FormBuilder) {
     this.ubigeoService.listaDepartamento().subscribe(
       (x) => this.departamentos = x
+    );
+    this.usuarioService.listaUsuario().subscribe(
+      (u) => this.usuarios = u
     );
   }
   cargaProvincia() {

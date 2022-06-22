@@ -30,8 +30,12 @@ export class VisitaService {
     return this.http.get(baseUrl2 + "/listaVisitanteConParametros", {params});
   }
   
-  listaVisita(codvisitantes:number, coddepartamento:number, estado:number):Observable<any>{
-    const params = new HttpParams().set("codvisitantes", codvisitantes).set("coddepartamento", coddepartamento).set("estado", estado);
+  listaVisita(codvisitantes:number, 
+              coddepartamento:number,
+              estado:number):Observable<any>{
+    const params = new HttpParams().set("codvisitantes", codvisitantes)
+                                   .set("coddepartamento", coddepartamento)
+                                   .set("estado", estado);
     return this.http.get<any>(baseUrl + "/listaVisitaConParametros", {params});
   }
 }
