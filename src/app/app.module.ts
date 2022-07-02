@@ -22,6 +22,8 @@ import { AddVisitaComponent } from './components/add-visita/add-visita.component
 import { AddBoletaComponent } from './components/add-boleta/add-boleta.component';
 import { AddPagoComponent } from './components/add-pago/add-pago.component';
 import { ConsultaBoletaComponent } from './components/consulta-boleta/consulta-boleta.component';
+import { AddCausasComponent } from './components/add-causas/add-causas.component';
+import { AddConsultaincidenteComponent } from './components/add-consultaincidente/add-consultaincidente.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { ConsultaBoletaComponent } from './components/consulta-boleta/consulta-b
     AddBoletaComponent,
     AddPagoComponent,
     ConsultaBoletaComponent,
+    AddCausasComponent,
+    AddConsultaincidenteComponent
   ],
   imports: [
     NgxPaginationModule,

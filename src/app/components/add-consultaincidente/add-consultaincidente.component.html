@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<app-menu></app-menu>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--es como el JSTL - customTag-->
+
+<head th:replace="principal::head">
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="add-visita.component.js" type="text/javascript"></script>
+
+</head>
+
+<div style="margin-top: 4%; width: 70%; margin-left: 15%;">
+
+    <form class="content">
+        <div class="submit-form" style="margin-left: 20%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6>REGISTRO DE INCIDENTE</h6>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3%">
+                <div class="col-lg-4">
+                    <label for="edificio">Edificio</label>
+                    <select id="edificio" name="edificio" class="form-control" [(ngModel)]="selEdi">
+                        <option value="-1"> Seleccione </option>
+                        <option *ngFor="let aux of edificios" value="{{aux.codedificio}}">
+                            {{ aux.nomedificio}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento" class="form-control" [(ngModel)]="selDepa">
+                        <option value="-1"> [Seleccione] </option>
+                        <option *ngFor="let aux of departamentos" value="{{aux.coddepartamento}}">
+                            {{ aux.numdepartamento}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 3%">
+                <div class="col-lg-4">
+                    <label for="edificio">Estado</label>
+                    <select id="edificio" name="edificio" class="form-control" [(ngModel)]="selEsta">
+                        <option value="-1"> Seleccione </option>
+                        <option value="1"> No Atendido </option>
+                        <option value="0"> Atendido </option>
+                    </select>
+                </div>
+                <div class="col-lg-4">
+                    <label for="causas">Causas del Incidente</label>
+                    <select id="causas" name="causas" class="form-control" [(ngModel)]="selCaus">
+                        <option value="-1"> [Seleccione] </option>
+                        <option *ngFor="let aux of causas" value="{{aux.codcausas}}">
+                            {{ aux.descripcion}}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 3%">
+                <div class="col-lg-2">
+                    <button (click)="listaIncidenteConFiltro()" type="button"
+                        class="btn btn-primary mb-2">Consultar</button>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-primary mb-2" type="button" routerLink="/addIncidente"
+                        routerLinkActive="active">Registrar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Tabla Visita-->
+        <div class="row" style="margin-top: 3%">
+            <table class="table table-hover" id="tb">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Departamento</th>
+                        <th>Causa del Incidente</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let aux of incidentes  | paginate: {itemsPerPage: 5, currentPage: pageActual}">
+                        <td>{{ aux.codincidente}}</td>
+                        <td>{{ aux.coddepartamento!.numdepartamento}}</td>
+                        <td>{{ aux.codcausas!.descripcion}}</td>
+                        <td>{{ aux.estado == 1 ? "No Atendido" : "Atendido" }}</td>
+                        <td><button (click)="actualizarEstado(aux)" type="button" style="width: 90px"
+                                class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#idModalActualizar">Atender</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+    </form>
+
+</div>
