@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AddBoletaComponent } from './components/add-boleta/add-boleta.component';
 import { ConsultaBoletaComponent } from './components/consulta-boleta/consulta-boleta.component';
 import { AddPagoComponent } from './components/add-pago/add-pago.component';
+import { AddConsultaincidenteComponent } from './components/add-consultaincidente/add-consultaincidente.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:"addDepartamento",component:AddDepartamentoComponent},
   {path:"addMascota",component:AddMascotaComponent},
   {path:"addVisita",component:AddVisitaComponent},
+  {path:"addConsultarIncidente",component:AddConsultaincidenteComponent},
   {path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
