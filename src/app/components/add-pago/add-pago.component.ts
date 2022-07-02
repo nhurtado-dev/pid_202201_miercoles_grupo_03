@@ -18,15 +18,15 @@ export class AddPagoComponent implements OnInit {
   boleta:Boleta[]=[];
   pagos:Pago[]=[];
 
-  
   pago:Pago={
     idUsuario:{
       idUsuario:1
     },
     codboleta:{
       codboleta:-1
-    },
-    tipopago:-1
+    }
+    ,
+    codpago: -1
   }
 
 
@@ -35,22 +35,41 @@ export class AddPagoComponent implements OnInit {
   constructor(private boletaService:BoletaService,
               private pagoService:PagoService,
               private usuarioService:UsuarioService) { 
-                this.boletaService.listaBoleta().subscribe(
-                  (a) =>this.boleta = a
-                );
                 this.usuarioService.listaUsuario().subscribe(
                   (u) => this.usuario = u
                 );
-                this.pagoService.listaPago().subscribe(
-                  (p) =>  this.pagos = p
+                this.cargarPagos();
+
+                this.boletaService.listaBoleta().subscribe(
+                  (a) =>this.boleta = a
                 );
   }
   insertado() {
+
+    if(this.pago.codboleta?.codboleta == -1){
+      alert("Debes seleccionar una boleta a pagar");
+      return;
+    }
+
+    if(this.pago.tipopago == -1 || this.pago.tipopago == undefined ){
+      alert("Debes seleccionar un pago");
+      return;
+    }
+
     this.pagoService.RegistraPago(this.pago).subscribe( 
       
       (x) => {
         alert(x.mensaje)
         console.log(this.boleta);
+        this.pago ={
+          idUsuario:{
+            idUsuario:1
+          },
+          codboleta:{
+            codboleta:-1
+          }
+        };
+        this.cargarPagos();
       }
     );
     
@@ -60,6 +79,12 @@ export class AddPagoComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  cargarPagos(){
+    this.pagoService.listaPago().subscribe(
+      (p) =>  this.pagos = p
+    );
   }
 
 }

@@ -46,7 +46,6 @@ import { ConsultaBoletaComponent } from './components/consulta-boleta/consulta-b
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    //ReactiveFormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     AppRoutingModule
   ],

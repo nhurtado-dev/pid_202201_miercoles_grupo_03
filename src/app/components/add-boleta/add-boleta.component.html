@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <div style="margin-top: 4%; width: 70%; margin-left: 15%;">
 
-    <form  class="content">
+    <form class="content">
         <div class="submit-form" style="margin-left: 20%;">
             <div class="row">
                 <div class="col-lg-12">
@@ -11,22 +11,20 @@
             <div class="row" style="margin-top: 3%;margin-right: 20%;">
                 <div class="col-lg-4">
                     <label for="codvisitantes">Servicio</label>
-                    <select  class="form-control" name="codvisitantes" id="codvisitantes" value="-1"
-                    [(ngModel)]="boleta.codservicio!.codservicio">
+                    <select class="form-control" name="codvisitantes" id="codvisitantes" value="-1"
+                    [(ngModel)]="boleta.codservicio!.codservicio"
+                    >
                         <option value="-1"> [Seleccione] </option>
                         <option *ngFor="let aux of servicio" value="{{aux.codservicio}}" >
                           {{aux.tiposervicio}}
                         </option>
                     </select>
-                  <!-- <div *ngIf="submitted && formsRegistra.controls.validapropietario.errors">       
-                        <ul> 
-                        </ul>
-                    </div>-->
                 </div>
                 <div class="col-lg-4">
                     <label for="departamento">Propietario</label>
-                    <select    id="departamento" name="departamento" class="form-control"
-                    [(ngModel)]="boleta.codpropietario!.codpropietario" >
+                    <select id="departamento" name="departamento" class="form-control"
+                    [(ngModel)]="boleta.codpropietario!.codpropietario"
+                    >
                         <option value="-1"> [Seleccione] </option>
                         <option *ngFor="let aux of propietarios" value="{{aux.codpropietario}}" >
                             {{ aux.nombre }} {{ aux.primerapellido}}
@@ -35,20 +33,23 @@
                 </div>
                 <div class="col-lg-4">
                     <label for="dni">Fecha de Vecimiento</label>
-                    <input  type="date" class="form-control" name="dni" id="dni"
-                    [(ngModel)]="boleta.fechavencimiento" />
+                    <input type="date" class="form-control" name="dni" id="dni"
+                    [(ngModel)]="boleta.fechavencimiento"
+                    />
                 </div>
             </div>
             <div class="row" style="margin-top: 3%;margin-right: 20%;">
                 <div class="col-lg-6">
                     <label for="dni">Costo sin IGV</label>
-                    <input  type="text" class="form-control" name="dni" id="dni"
-                    [(ngModel)]="boleta.costosinigv" />
+                    <input type="number" class="form-control" name="dni" id="dni"
+                    [(ngModel)]="boleta.costosinigv"
+                    />
                 </div>
                 <div class="col-lg-6">
                     <label for="dni">Costo Total</label>
-                    <input type="text" class="form-control" name="dni" id="dni" 
-                    [(ngModel)]="boleta.costototal"/>
+                    <input type="number" class="form-control" name="dni" id="dni" 
+                    [(ngModel)]="boleta.costototal"
+                    />
                 </div>
             </div>
             <div class="row" style="margin-top: 3%;margin-right: 20%;">
@@ -65,7 +66,7 @@
 
                 <div class="col-lg-4" hidden>
                     <label for="usuario">Usuario</label>
-                    <select   id="usuario" name="usuario" class="form-control" required
+                    <select id="usuario" name="usuario" class="form-control" required
                         [(ngModel)]="boleta.idUsuario!.idUsuario" disabled="disabled">
                         <option *ngFor="let aux of usuario" value="{{aux.idUsuario}}">
                             {{ aux.nombre }}

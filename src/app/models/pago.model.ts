@@ -5,6 +5,5 @@ export class Pago {
     codpago?:number;
     tipopago?:number;
     idUsuario?:Usuario;
-    fechaemision?:Date;
     codboleta?:Boleta;
 }
